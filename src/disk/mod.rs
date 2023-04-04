@@ -41,7 +41,7 @@ use unix_ext;
 /// [unix extensions]: ../unix_ext/trait.DirBuilderExt.html
 ///
 /// # Examples
-/// 
+///
 /// ```
 /// # use rsfs::*;
 /// # fn foo() -> std::io::Result<()> {
@@ -56,7 +56,8 @@ pub struct DirBuilder(rs_fs::DirBuilder);
 
 impl fs::DirBuilder for DirBuilder {
     fn recursive(&mut self, recursive: bool) -> &mut Self {
-        self.0.recursive(recursive); self
+        self.0.recursive(recursive);
+        self
     }
     fn create<P: AsRef<Path>>(&self, path: P) -> Result<()> {
         self.0.create(path)
@@ -66,7 +67,8 @@ impl fs::DirBuilder for DirBuilder {
 #[cfg(unix)]
 impl unix_ext::DirBuilderExt for DirBuilder {
     fn mode(&mut self, mode: u32) -> &mut Self {
-        self.0.mode(mode); self
+        self.0.mode(mode);
+        self
     }
 }
 
@@ -353,22 +355,28 @@ impl fs::OpenOptions for OpenOptions {
     type File = File;
 
     fn read(&mut self, read: bool) -> &mut Self {
-        self.0.read(read); self
+        self.0.read(read);
+        self
     }
     fn write(&mut self, write: bool) -> &mut Self {
-        self.0.write(write); self
+        self.0.write(write);
+        self
     }
     fn append(&mut self, append: bool) -> &mut Self {
-        self.0.append(append); self
+        self.0.append(append);
+        self
     }
     fn truncate(&mut self, truncate: bool) -> &mut Self {
-        self.0.truncate(truncate); self
+        self.0.truncate(truncate);
+        self
     }
     fn create(&mut self, create: bool) -> &mut Self {
-        self.0.create(create); self
+        self.0.create(create);
+        self
     }
     fn create_new(&mut self, create_new: bool) -> &mut Self {
-        self.0.create_new(create_new); self
+        self.0.create_new(create_new);
+        self
     }
     fn open<P: AsRef<Path>>(&self, path: P) -> Result<Self::File> {
         self.0.open(path).map(File)
@@ -378,10 +386,12 @@ impl fs::OpenOptions for OpenOptions {
 #[cfg(unix)]
 impl unix_ext::OpenOptionsExt for OpenOptions {
     fn mode(&mut self, mode: u32) -> &mut Self {
-        self.0.mode(mode); self
+        self.0.mode(mode);
+        self
     }
     fn custom_flags(&mut self, flags: i32) -> &mut Self {
-        self.0.custom_flags(flags); self
+        self.0.custom_flags(flags);
+        self
     }
 }
 
@@ -468,7 +478,7 @@ impl Iterator for ReadDir {
 /// [`std::fs`]: https://doc.rust-lang.org/std/fs/
 ///
 /// # Examples
-/// 
+///
 /// ```
 /// use rsfs::*;
 ///

@@ -3,8 +3,7 @@
 use std::ffi::OsString;
 use std::fmt::Debug;
 use std::hash::Hash;
-use std::io::{Read, Seek, Write};
-use std::io::Result;
+use std::io::{Read, Result, Seek, Write};
 use std::path::{Path, PathBuf};
 use std::time::SystemTime;
 
@@ -410,7 +409,7 @@ pub trait FileType: Copy + Clone + PartialEq + Eq + Hash + Debug {
 ///
 /// [`metadata`]: trait.GenFS.html#tymethod.metadata
 /// [`symlink_metadata`]: trait.GenFS.html#tymethod.symlink_metadata
-pub trait Metadata: Clone + Debug  {
+pub trait Metadata: Clone + Debug {
     /// The `Permissions` type in the same module implementing this trait.
     type Permissions: Permissions;
     /// The `FileType` type in the same module implementing this trait.
@@ -645,7 +644,7 @@ pub trait OpenOptions: Clone + Debug {
 
     /// Sets the option for read access.
     ///
-    /// This option, when true, indicates a file should be `read`-able if opened. 
+    /// This option, when true, indicates a file should be `read`-able if opened.
     ///
     /// # Examples
     ///
@@ -661,7 +660,7 @@ pub trait OpenOptions: Clone + Debug {
     fn read(&mut self, read: bool) -> &mut Self;
     /// Sets the option for write access.
     ///
-    /// This option, when true, indicates a file should be `write`-able if opened. 
+    /// This option, when true, indicates a file should be `write`-able if opened.
     ///
     /// If the file already exists, write calls will overwrite existing file contents.
     ///

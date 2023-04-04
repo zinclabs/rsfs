@@ -159,7 +159,7 @@ pub trait OpenOptionsExt {
     ///
     /// # fn foo() -> std::io::Result<()> {
     /// let fs = FS::new();
-    /// 
+    ///
     /// let mut options = fs.new_openopts();
     /// options.write(true);
     /// if cfg!(unix) {
